@@ -7,10 +7,11 @@ body{
 }
 button{
     transition-duration: 0.6s;
+    cursor:pointer;
 }
 .cell{
     color:rgba(255, 174, 0, 0.816);
-    font-size: 3vh;
+    font-size: 4vh;
     border-color: black;
     border-radius: 15px;
     width: 23vi;
@@ -30,9 +31,19 @@ button:active{
     transition-duration: 0.15s;
 }
 .res{
+    display:flex;
+    flex-direction: column;
+    position: relative;
     border: solid thick black;
     border-radius: 15px;
     height:fit-content;
     font-size: 4vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#delete{
+    display:flex;
+    justify-content: right;
+    font-size: 4vh;
+    background: none;
+    border: none;
 }
