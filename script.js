@@ -38,7 +38,7 @@ function calc(){
             }
         } else if(nowNumber[i] == '.') {
             isDrob = true;
-        } else {
+        } else if (nowNumber[i] != '%') {
             numbers.push(now);
             now = 0;
             pow_10 = 10;
@@ -58,11 +58,13 @@ function calc(){
             numbers[j] = numbers[j] / numbers[j+1];
             numbers.splice(j+1, 1);
         } else if(nowNumber[i] == "%"){
-            numbers[j] = numbers[j]/100;
+            numbers[j] /= 100;
+            for(let i = 0; i < numbers.length; ++i) {
+                console.log(numbers[i]);
+            }
         } else if(nowNumber[i] == '+' || nowNumber[i] == '-') j++;
     }
     j = 0;
-    
     let res = numbers[0];
     for (let i = 0; i <= nowNumber.length; ++i){
         if (nowNumber[i] == '+'){
@@ -142,6 +144,7 @@ document.getElementById("square").addEventListener('click', function(){
     cntcomas = 0;
 });
 document.getElementById("percent").addEventListener('click', function(){
+    if (nowNumber[nowNumber.length-1] == "%" || nowNumber[nowNumber.length-1] == "×" || nowNumber[nowNumber.length-1] == "+" || nowNumber[nowNumber.length-1] == "-" || nowNumber[nowNumber.length-1] == "÷") nowNumber = nowNumber.substring(0, nowNumber.length-1);
     nowNumber = `${nowNumber}%`;
     updateNowNumber(nowNumber);
 });
@@ -176,4 +179,9 @@ document.getElementById("divide").addEventListener('click', function(){
 document.getElementById("result").addEventListener('click', function(){
     calc();
     cntcomas = 0;
+});
+document.getElementById("delete").addEventListener('click', function(){
+    if (nowNumber.length > 1)nowNumber = nowNumber.substring(0, nowNumber.length-1);
+    else nowNumber = "0";
+    updateNowNumber(nowNumber);
 });
