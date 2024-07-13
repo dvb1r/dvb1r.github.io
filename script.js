@@ -57,6 +57,8 @@ function calc(){
         } else if (nowNumber[i] == "÷") {
             numbers[j] = numbers[j] / numbers[j+1];
             numbers.splice(j+1, 1);
+        } else if(nowNumber[i] == "%"){
+            numbers[j] = numbers[j]/100;
         } else if(nowNumber[i] == '+' || nowNumber[i] == '-') j++;
     }
     j = 0;
@@ -140,10 +142,8 @@ document.getElementById("square").addEventListener('click', function(){
     cntcomas = 0;
 });
 document.getElementById("percent").addEventListener('click', function(){
-    nowNumber = (parseFloat(nowNumber)/100).toString();
-    cntcomas = 0;
-    updateNowNumber("");
-    updateRes(nowNumber);
+    nowNumber = `${nowNumber}%`;
+    updateNowNumber(nowNumber);
 });
 document.getElementById("swap").addEventListener('click', function(){
     nowNumber = (parseFloat(nowNumber) * (-1)).toString();
